@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<servlet>
+		<servlet-name>login</servlet-name>
+		<servlet-class>cn.szxy.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>login</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+		<url-pattern>/Log</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Regsin</servlet-name>
+		<servlet-class>cn.szxy.servlet.RegisnServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Favicon</servlet-name>
+		<servlet-class>cn.szxy.servlet.FaviconServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Favicon</servlet-name>
+		<url-pattern>/favicon.ico</url-pattern>
+	</servlet-mapping>
+</web-app>	
