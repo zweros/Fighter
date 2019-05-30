@@ -1,0 +1,91 @@
+
+问题： 日期格式问题 ：
+ 注意   "yyyy-MM-dd HH:mm:ss"  中  dd不能大写否则月份一直保持一月
+ 
+错误结果演示：  User [uid=null, name=小新, registerDate=2018-01-14 16:10:00.0, integral=20, sex=男]
+
+
+问题：  SQL 语法：无效字符 
+可以原因： SQL结尾 多加顿号  
+解决：切记 SQL 语句后面不要加 逗号
+
+
+
+问题： 26个字母随机组合3位数，要求不能有重复组合出现
+未解决
+
+
+
+问题原因：一次提交的数据太多，而数据库连接数太少，
+/*
+ * 
+ * 添加 用户出现的错误
+ * 
+ * 
+ 
+ * 数据库连接出现异常
+	java.sql.SQLException: Listener refused the connection with the following error:
+	ORA-12519, TNS:no appropriate service handler found
+ 
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:412)
+	at oracle.jdbc.driver.PhysicalConnection.<init>(PhysicalConnection.java:531)
+	at oracle.jdbc.driver.T4CConnection.<init>(T4CConnection.java:221)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:32)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:503)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at cn.szxy.util.DBUtil.getConnection(DBUtil.java:45)
+	at cn.szxy.dao.impl.UserDaoImpl.addUser(UserDaoImpl.java:21)
+	at cn.szxy.test.TestUser.TestaddUsers(TestUser.java:74)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+ 
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:385)
+	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:1042)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:301)
+	... 32 more
+ * */
+ */
+ 
+ 总结：
+ 1. 问题： 日期格式问题 ：  "yyyy-MM-dd HH:mm:ss"  中  dd不能大写否则月份一直保持一月。
+
+   错误结果：  User [uid=null, name=小新, registerDate=2018-01-14 16:10:00.0, integral=20, sex=男]
+
+2. 问题：插入新用户时，报SQL 语法错误。
+
+   错误原因： SQL 语句结尾多加逗号
+
+3. 问题：插入1000条 数据时，报数据库连接异常错误。
+
+   错误原因: 一次性插入的数据过多，超过数据库连接数，导致数据库连接出现异常
+
+4. 需求： 用26个英文字母产生 1000 个由三个英文字母组成的昵称
+
+   解决：利用集合 HashSet 的特性-互异性，产生1000个不同的昵称，然后放入数组中。
+   
+
+5. 根据月份查询用户信息，未完全实现，查询操作有点麻烦。
